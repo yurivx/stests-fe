@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-     <router-view></router-view>
+      <TestList />
   </div>
- </template>
- 
- <script>
- export default {
-  name: 'App'
- }
- </script>
- 
+</template>
+
+<script>
+import TestList from './components/TestList.vue';
+
+export default {
+  components: {
+      TestList
+  }
+}
+</script>

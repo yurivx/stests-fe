@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material/data-table": "^14.0.0",
     "axios": "^1.6.8",
     "vue": "^3.4.21",
     "vue-axios": "^3.5.2",
