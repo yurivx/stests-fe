@@ -1,6 +1,7 @@
 <template>
    <div>
      <h1 style="text-align: center;">{{ test_name }}</h1>
+     <h3>{{ test_description }}</h3>
      <form @submit.prevent="submitForm" class="form-container">
        <div v-if="questions.length > 0" class="question-container">
          <div v-if="currentQuestionData">
@@ -17,14 +18,15 @@
                </tr>
              </tbody>
            </table>
-           <p v-if="remainingQuestions">Осталось {{ remainingQuestions }} из {{ questions.length }} вопросов</p>
+           <p v-if="remainingQuestions">Осталось {{ remainingQuestions }} из {{ questions.length }}</p>
+           <p v-if="!remainingQuestions">Последний вопрос</p>
          </div>
        </div>
-       <div v-if="currentQuestion < questions.length - 1" class="navigation-buttons">
-         <button type="button" @click="previousQuestion" :disabled="currentQuestion <= 0" class="navigation-button">Предыдущий вопрос</button>
-         <button type="button" @click="nextQuestion" class="navigation-button">Следующий вопрос</button>
+       <div class="navigation-buttons">
+         <button type="button" @click="previousQuestion" :disabled="currentQuestion <= 0" class="navigation-button">&#8592;</button>
+         <button type="button" @click="nextQuestion" :disabled="currentQuestion === questions.length - 1" class="navigation-button">&#8594;</button>
        </div>
-       <div v-if="currentQuestion === questions.length - 1" class="submit-container">
+       <div class="submit-container" v-if="currentQuestion === questions.length - 1">
          <button type="submit" class="submit-button">Отправить</button>
        </div>
      </form>
@@ -41,6 +43,7 @@
        questions: [],
        answers: {},
        test_name: '',
+       test_description: '',
        currentQuestion: 0
      };
    },
@@ -60,6 +63,7 @@
        axiosInstance.get(`/test/${this.id}`)
          .then(response => {
            this.test_name = response.data[0].name;
+           this.test_description = response.data[0].description;
            this.questions = response.data[0].questions;
            this.questions.forEach(question => {
              if (!this.answers[question.question_id]) {
@@ -70,6 +74,8 @@
          .catch(error => {
            console.error(error);
          });
+
+         
      },
      updateAnswer(event, questionId) {
        this.answers = {
@@ -137,8 +143,6 @@
  .navigation-button {
    padding: 10px 20px;
    font-size: 18px;
-   background-color: #007bff;
-   color: #fff;
    border: none;
    border-radius: 5px;
    cursor: pointer;
@@ -146,9 +150,19 @@
    margin: 5px;
  }
  
+ .submit-button {
+   background-color: #6dc498; /* Зеленый цвет */
+   color: #fff;
+ }
+ 
+ .navigation-button {
+   background-color: #6dc498;
+   color: #fff;
+ }
+ 
  .submit-button:hover,
  .navigation-button:hover {
-   background-color: #0056b3;
+   background-color: #96ace8;
  }
  
  .navigation-button:disabled {
