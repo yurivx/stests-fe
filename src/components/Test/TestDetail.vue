@@ -1,7 +1,7 @@
 <template>
    <div>
      <h1 style="text-align: center;">{{ test_name }}</h1>
-     <h3>{{ test_description }}</h3>
+     <h3 class="mdc-typography--headline6">{{ test_description }}</h3>
      <form @submit.prevent="submitForm" class="form-container">
        <div v-if="questions.length > 0" class="question-container">
          <div v-if="currentQuestionData">
@@ -34,7 +34,7 @@
  </template>
  
  <script>
- import axiosInstance from './../axiosConfig';
+ import axiosInstance from './../../axiosConfig';
 
  export default {
    props: ['id'], // Получаем id из параметров маршрута

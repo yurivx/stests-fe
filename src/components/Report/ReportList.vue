@@ -3,13 +3,13 @@
      <table class="mdc-data-table__table">
        <thead>
          <tr class="mdc-data-table__header-row">
-           <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Тесты</th>
+           <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Отчеты</th>
          </tr>
        </thead>
        <tbody class="mdc-data-table__content">
          <tr v-for="test in tests" :key="test.id" class="mdc-data-table__row">
            <td class="mdc-data-table__cell">
-             <router-link :to="{ name: 'TestDetail', params: { id: test.id } }">{{ test.name }}</router-link>
+             <router-link :to="{ name: 'ReportDetail', params: { id: test.id } }">{{ test.name }}</router-link>
            </td>
          </tr>
        </tbody>
@@ -18,7 +18,7 @@
  </template>
  
  <script>
- import axiosInstance from './../axiosConfig'; 
+ import axiosInstance from './../../axiosConfig'; 
  
  export default {
   data() {

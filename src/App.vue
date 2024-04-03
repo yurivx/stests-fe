@@ -5,8 +5,8 @@
  </template>
 
 <script>
-import TestList from './components/TestList.vue';
-import TestDetail from './components/TestDetail.vue';
+import TestList from './components/Test/TestList.vue';
+import TestDetail from './components/Test/TestDetail.vue';
 
 export default {
   components: {
