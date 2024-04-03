@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-      <TestList />
+     <router-view></router-view>
   </div>
-</template>
+ </template>
 
 <script>
 import TestList from './components/TestList.vue';
+import TestDetail from './components/TestDetail.vue';
 
 export default {
   components: {
-      TestList
+      TestList,
+      TestDetail
   }
 }
 </script>

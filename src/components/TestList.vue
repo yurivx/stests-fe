@@ -1,17 +1,19 @@
 <template>
   <div class="table-responsive">
-      <table class="mdc-data-table__table">
-        <thead>
-          <tr class="mdc-data-table__header-row">
-            <th class="mdc-data-table__header-cell centered-header" role="columnheader" scope="col">Тесты</th>
-          </tr>
-        </thead>
-        <tbody class="mdc-data-table__content">
-          <tr v-for="test in tests" :key="test.id" class="mdc-data-table__row">
-           <td class="mdc-data-table__cell"><a :href="'http://localhost:8080/test/' + test.id">{{ test.name }}</a></td>
-          </tr>
-        </tbody>
-      </table>
+     <table class="mdc-data-table__table">
+       <thead>
+         <tr class="mdc-data-table__header-row">
+           <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Тесты</th>
+         </tr>
+       </thead>
+       <tbody class="mdc-data-table__content">
+         <tr v-for="test in tests" :key="test.id" class="mdc-data-table__row">
+           <td class="mdc-data-table__cell">
+             <router-link :to="{ name: 'TestDetail', params: { id: test.id } }">{{ test.name }}</router-link>
+           </td>
+         </tr>
+       </tbody>
+     </table>
   </div>
  </template>
  
