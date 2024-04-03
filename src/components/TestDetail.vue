@@ -35,7 +35,7 @@
  
  <script>
  import axiosInstance from './../axiosConfig';
- 
+
  export default {
    props: ['id'], // Получаем id из параметров маршрута
    data() {
@@ -85,7 +85,7 @@
      },
      submitForm() {
        const dataToSend = {
-         test_id: this.id,
+         test_id: parseInt(this.id, 10),
          answers: Object.keys(this.answers).map(questionId => ({
            question_id: parseInt(questionId, 10),
            answer_id: parseInt(this.answers[questionId], 10)
@@ -94,6 +94,7 @@
        axiosInstance.post('/submit', dataToSend)
          .then(response => {
            console.log('Данные успешно отправлены:', response.data);
+           this.$router.push({ name: 'TestList' });
          })
          .catch(error => {
            console.error('Ошибка при отправке данных:', error);
