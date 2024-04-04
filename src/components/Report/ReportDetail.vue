@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="length(testResul) > 0" id="test-result" class="mdc-data-table">
+    <div v-if="testResult" id="test-result" class="mdc-data-table">
       <h3 class="mdc-typography--headline3 text-center">{{ testResult.test_name }}</h3>
       <table class="mdc-data-table__table">
         <thead>
@@ -24,7 +24,7 @@
         </tbody>
       </table>
     </div>
-    <div v-if="length(testResul) == 0" class="text-center">
+    <div v-else class="text-center">
       <p class="mdc-typography--body1">Пока нет данных</p>
     </div>
   </div>
