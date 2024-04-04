@@ -5,8 +5,8 @@ function getApiBaseUrl() {
  // Используйте переменные окружения для определения базового URL
  // Например, для разработки и продакшена
  return process.env.NODE_ENV === 'development'
-    ? 'http://localhost:8080/'
-    : 'https://your-production-api-url.com/';
+    ? 'http://localhost:443/'
+    : 'http://yurivx-stests-5938.twc1.net:443/';
 }
 
 // Создание экземпляра axios с базовым URL
