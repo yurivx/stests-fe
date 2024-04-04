@@ -1,6 +1,6 @@
 <template>
   <div class="table-responsive">
-    <h2 v-if="tests.length > 0" class="mdc-typography--headline6 centered-header">Тесты</h2>
+    <h1 v-if="tests.length > 0" class="mdc-typography--headline6 centered-header">Тесты</h1>
     <template v-if="tests.length > 0">
       <table class="mdc-data-table__table">
         <tbody class="mdc-data-table__content">

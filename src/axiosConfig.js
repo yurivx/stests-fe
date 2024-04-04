@@ -6,7 +6,7 @@ function getApiBaseUrl() {
  // Например, для разработки и продакшена
  return process.env.NODE_ENV === 'development'
     ? 'http://localhost:443/'
-    : 'http://yurivx-stests-5938.twc1.net:443/';
+    : 'https://yurivx-stests-1288.twc1.net:443/';
 }
 
 // Создание экземпляра axios с базовым URL
