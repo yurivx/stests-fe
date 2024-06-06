@@ -12,7 +12,7 @@
                 <td>
                   <input type="radio" :id="`question-${currentQuestionData.question_id}-${option.answer_id}`"
                     :name="`question-${currentQuestionData.question_id}`" :value="option.answer_id"
-                    @change="updateAnswer($event, currentQuestionData.question_id)"
+                    @change="updateAnswer($event, currentQuestionData.question_id, option.point)"
                     v-model="answers[currentQuestionData.question_id]" />
                 </td>
                 <td>
@@ -37,9 +37,13 @@
         <button type="submit" class="submit-button mdc-typography--button">Отправить</button>
       </div>
     </form>
+    <div v-if="totalPoints !== null && averagePoints !== null" class="points-container text-center">
+      <h3 class="mdc-typography--headline5">Сумма: {{ totalPoints }}</h3>
+      <h3 class="mdc-typography--headline5">Среднее: {{ averagePoints.toFixed(2) }}</h3>
+      <p class="mdc-typography--body1">{{ phrase }}</p>
+    </div>
   </div>
 </template>
-
 
 <script>
 import axiosInstance from './../../axiosConfig';
@@ -52,6 +56,10 @@ export default {
       answers: {},
       test_name: '',
       test_description: '',
+      points: {},
+      totalPoints: null,
+      averagePoints: null,
+      phrase: '',
       currentQuestion: 0
     };
   },
@@ -77,19 +85,45 @@ export default {
             if (!this.answers[question.question_id]) {
               this.answers[question.question_id] = null;
             }
+            question.options.forEach(option => {
+              this.points[option.answer_id] = option.point;
+            });
           });
         })
         .catch(error => {
           console.error(error);
         });
-
-
     },
-    updateAnswer(event, questionId) {
+    updateAnswer(event, questionId, point) {
       this.answers = {
         ...this.answers,
         [questionId]: event.target.value
       };
+      this.points = {
+        ...this.points,
+        [event.target.value]: point
+      };
+    },
+    calculateTotalAndAveragePoints() {
+      let total = 0;
+      let count = 0;
+      for (let questionId in this.answers) {
+        const answerId = this.answers[questionId];
+        if (this.points[answerId] !== undefined) {
+          total += this.points[answerId];
+          count++;
+        }
+      }
+      const average = total / count;
+      let phrase = '';
+      if (average >= 8) {
+        phrase = 'Отличный результат!';
+      } else if (average >= 5) {
+        phrase = 'Хороший результат!';
+      } else {
+        phrase = 'Есть куда расти.';
+      }
+      return { total, average, phrase };
     },
     submitForm() {
       const dataToSend = {
@@ -102,7 +136,10 @@ export default {
       axiosInstance.post('/submit', dataToSend)
         .then(response => {
           console.log('Данные успешно отправлены:', response.data);
-          this.$router.push({ name: 'TestList' });
+          const { total, average, phrase } = this.calculateTotalAndAveragePoints();
+          this.totalPoints = total;
+          this.averagePoints = average;
+          this.phrase = phrase;
         })
         .catch(error => {
           console.error('Ошибка при отправке данных:', error);
@@ -117,7 +154,7 @@ export default {
   },
   mounted() {
     this.fetchData();
-  },
+  }
 };
 </script>
 
@@ -183,6 +220,10 @@ export default {
 }
 
 .submit-container {
+  margin-top: 20px;
+}
+
+.points-container {
   margin-top: 20px;
 }
 </style>
