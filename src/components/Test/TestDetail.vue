@@ -38,9 +38,21 @@
       </div>
     </form>
     <div v-if="totalPoints !== null && averagePoints !== null" class="points-container text-center">
-      <h3 class="mdc-typography--headline5">Сумма: {{ totalPoints }}</h3>
-      <h3 class="mdc-typography--headline5">Среднее: {{ averagePoints.toFixed(2) }}</h3>
-      <p class="mdc-typography--body1">{{ phrase }}</p>
+      <template v-if="id == 1">
+        <h3 class="mdc-typography--headline5">Test 1: Сумма: {{ totalPoints }}</h3>
+        <h3 class="mdc-typography--headline5">Test 1: Среднее: {{ averagePoints.toFixed(2) }}</h3>
+        <p class="mdc-typography--body1">Test 1: {{ phrase }}</p>
+      </template>
+      <template v-else-if="id == 2">
+        <h3 class="mdc-typography--headline5">Test 2: Сумма: {{ totalPoints }}</h3>
+        <h3 class="mdc-typography--headline5">Test 2: Среднее: {{ averagePoints.toFixed(2) }}</h3>
+        <p class="mdc-typography--body1">Test 2: {{ phrase }}</p>
+      </template>
+      <template v-else>
+        <h3 class="mdc-typography--headline5">Сумма: {{ totalPoints }}</h3>
+        <h3 class="mdc-typography--headline5">Среднее: {{ averagePoints.toFixed(2) }}</h3>
+        <p class="mdc-typography--body1">{{ phrase }}</p>
+      </template>
     </div>
   </div>
 </template>
@@ -157,6 +169,9 @@ export default {
   }
 };
 </script>
+
+ 
+
 
 <style scoped>
 .form-container {
