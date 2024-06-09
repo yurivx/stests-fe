@@ -1,58 +1,71 @@
 <template>
   <div>
     <h3 class="mdc-typography--headline3 text-center">{{ test_name }}</h3>
-    <p class="mdc-typography--headline6">{{ test_description }}</p>
-    <form @submit.prevent="submitForm" class="form-container">
-      <div v-if="questions.length > 0" class="question-container">
-        <div v-if="currentQuestionData">
-          <h2 class="mdc-typography--headline5 question-text text-center">{{ currentQuestionData.text }}</h2>
-          <table class="options-table">
-            <tbody>
-              <tr v-for="(option, idx) in currentQuestionData.options" :key="idx">
-                <td>
-                  <input type="radio" :id="`question-${currentQuestionData.question_id}-${option.answer_id}`"
-                    :name="`question-${currentQuestionData.question_id}`" :value="option.answer_id"
-                    @change="updateAnswer($event, currentQuestionData.question_id, option.point)"
-                    v-model="answers[currentQuestionData.question_id]" />
-                </td>
-                <td>
-                  <label :for="`question-${currentQuestionData.question_id}-${option.answer_id}`"
-                    class="option-label mdc-typography--body1">{{ option.value }}</label>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <p v-if="remainingQuestions" class="mdc-typography--body2 text-center">Осталось {{ remainingQuestions }} из {{
-      questions.length }}</p>
-          <p v-if="!remainingQuestions" class="mdc-typography--body2 text-center">Последний вопрос</p>
+    <div v-if="!formSubmitted">
+      <p class="mdc-typography--headline6">{{ test_description }}</p>
+      <form @submit.prevent="submitForm" class="form-container">
+        <div v-if="questions.length > 0" class="question-container">
+          <div v-if="currentQuestionData">
+            <h2 class="mdc-typography--headline5 question-text text-center">{{ currentQuestionData.text }}</h2>
+            <table class="options-table">
+              <tbody>
+                <tr v-for="(option, idx) in currentQuestionData.options" :key="idx">
+                  <td>
+                    <input type="radio" :id="`question-${currentQuestionData.question_id}-${option.answer_id}`"
+                      :name="`question-${currentQuestionData.question_id}`" :value="option.answer_id"
+                      @change="updateAnswer($event, currentQuestionData.question_id, option.point)"
+                      v-model="answers[currentQuestionData.question_id]" />
+                  </td>
+                  <td>
+                    <label :for="`question-${currentQuestionData.question_id}-${option.answer_id}`"
+                      class="option-label mdc-typography--body1">{{ option.value }}</label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p v-if="remainingQuestions" class="mdc-typography--body2 text-center">Осталось {{ remainingQuestions }} из {{
+        questions.length }}</p>
+            <p v-if="!remainingQuestions" class="mdc-typography--body2 text-center">Последний вопрос</p>
+          </div>
         </div>
-      </div>
-      <div class="navigation-buttons text-center">
-        <button type="button" @click="previousQuestion" :disabled="currentQuestion <= 0"
-          class="navigation-button mdc-typography--button">&#8592;</button>
-        <button type="button" @click="nextQuestion" :disabled="currentQuestion === questions.length - 1"
-          class="navigation-button mdc-typography--button">&#8594;</button>
-      </div>
-      <div class="submit-container text-center" v-if="currentQuestion === questions.length - 1">
-        <button type="submit" class="submit-button mdc-typography--button">Отправить</button>
-      </div>
-    </form>
-    <div v-if="totalPoints !== null && averagePoints !== null" class="points-container text-center">
+        <div class="navigation-buttons text-center">
+          <button type="button" @click="previousQuestion" :disabled="currentQuestion <= 0"
+            class="navigation-button mdc-typography--button">&#8592;</button>
+          <button type="button" @click="nextQuestion" :disabled="currentQuestion === questions.length - 1"
+            class="navigation-button mdc-typography--button">&#8594;</button>
+        </div>
+        <div class="submit-container text-center" v-if="currentQuestion === questions.length - 1">
+          <button type="submit" class="submit-button mdc-typography--button">Отправить</button>
+        </div>
+      </form>
+    </div>
+    <div v-else class="points-container text-center">
       <template v-if="id == 1">
-        <h3 class="mdc-typography--headline5">Test 1: Сумма: {{ totalPoints }}</h3>
-        <h3 class="mdc-typography--headline5">Test 1: Среднее: {{ averagePoints.toFixed(2) }}</h3>
-        <p class="mdc-typography--body1">Test 1: {{ phrase }}</p>
+        <div>
+          <h2 class="mdc-typography--headline4">Улучшение</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ improvement.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ improvement.average.toFixed(2) }}</h3>
+        </div>
+        <div>
+          <h2 class="mdc-typography--headline4">Близость</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ closeness.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ closeness.average.toFixed(2) }}</h3>
+        </div>
+        <div>
+          <h2 class="mdc-typography--headline4">Преодоление</h2>
+          <h5 class="mdc-typography--headline6">Сумма: {{ overcoming.total }}</h5>
+          <h5 class="mdc-typography--headline6">Среднее: {{ overcoming.average.toFixed(2) }}</h5>
+        </div>
       </template>
       <template v-else-if="id == 2">
         <h3 class="mdc-typography--headline5">Test 2: Сумма: {{ totalPoints }}</h3>
         <h3 class="mdc-typography--headline5">Test 2: Среднее: {{ averagePoints.toFixed(2) }}</h3>
-        <p class="mdc-typography--body1">Test 2: {{ phrase }}</p>
       </template>
       <template v-else>
         <h3 class="mdc-typography--headline5">Сумма: {{ totalPoints }}</h3>
         <h3 class="mdc-typography--headline5">Среднее: {{ averagePoints.toFixed(2) }}</h3>
-        <p class="mdc-typography--body1">{{ phrase }}</p>
       </template>
+      <button @click="goBack" class="navigation-button mdc-typography--button">Назад</button>
     </div>
   </div>
 </template>
@@ -71,8 +84,20 @@ export default {
       points: {},
       totalPoints: null,
       averagePoints: null,
-      phrase: '',
-      currentQuestion: 0
+      currentQuestion: 0,
+      improvement: {
+        total: 0,
+        average: 0
+      },
+      closeness: {
+        total: 0,
+        average: 0
+      },
+      overcoming: {
+        total: 0,
+        average: 0
+      },
+      formSubmitted: false
     };
   },
   computed: {
@@ -116,7 +141,28 @@ export default {
         [event.target.value]: point
       };
     },
+    calculateSectionPoints(sectionQuestions) {
+      let total = 0;
+      let count = 0;
+      for (let questionId in this.answers) {
+        if (sectionQuestions.includes(parseInt(questionId, 10))) {
+          const answerId = this.answers[questionId];
+          if (this.points[answerId] !== undefined) {
+            total += this.points[answerId];
+            count++;
+          }
+        }
+      }
+      return {
+        total,
+        average: total / count
+      };
+    },
     calculateTotalAndAveragePoints() {
+      this.improvement = this.calculateSectionPoints([2, 6, 8, 10, 14]);
+      this.closeness = this.calculateSectionPoints([1, 5, 9, 11, 13]);
+      this.overcoming = this.calculateSectionPoints([3, 4, 7, 12, 15]);
+
       let total = 0;
       let count = 0;
       for (let questionId in this.answers) {
@@ -127,15 +173,8 @@ export default {
         }
       }
       const average = total / count;
-      let phrase = '';
-      if (average >= 8) {
-        phrase = 'Отличный результат!';
-      } else if (average >= 5) {
-        phrase = 'Хороший результат!';
-      } else {
-        phrase = 'Есть куда расти.';
-      }
-      return { total, average, phrase };
+
+      return { total, average };
     },
     submitForm() {
       const dataToSend = {
@@ -148,10 +187,10 @@ export default {
       axiosInstance.post('/submit', dataToSend)
         .then(response => {
           console.log('Данные успешно отправлены:', response.data);
-          const { total, average, phrase } = this.calculateTotalAndAveragePoints();
+          const { total, average } = this.calculateTotalAndAveragePoints();
           this.totalPoints = total;
           this.averagePoints = average;
-          this.phrase = phrase;
+          this.formSubmitted = true;
         })
         .catch(error => {
           console.error('Ошибка при отправке данных:', error);
@@ -162,6 +201,9 @@ export default {
     },
     nextQuestion() {
       this.currentQuestion++;
+    },
+    goBack() {
+      this.$router.push('/');
     }
   },
   mounted() {
@@ -169,9 +211,6 @@ export default {
   }
 };
 </script>
-
- 
-
 
 <style scoped>
 .form-container {
