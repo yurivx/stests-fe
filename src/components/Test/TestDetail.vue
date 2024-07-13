@@ -43,125 +43,125 @@
       <template v-if="id == 1">
         <div>
           <h2 class="mdc-typography--headline4">Улучшение</h2>
-          <h3 class="mdc-typография--headline6">Сумма: {{ improvement.total }}</h3>
-          <h3 class="mdc-typография--headline6">Среднее: {{ improvement.average.toFixed(2) }}</h3>
+          <h3 class="mdc-typography--headline6">Сумма: {{ improvement.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ improvement.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Близость</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ closeness.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ closeness.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Близость</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ closeness.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ closeness.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Преодоление</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ overcoming.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ overcoming.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Преодоление</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ overcoming.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ overcoming.average.toFixed(2) }}</h3>
         </div>
       </template>
       <template v-else-if="id == 2">
         <div>
-          <h2 class="mdc-типография--headline4">Отношение к представителям нетрадиционных направлений</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ unconventional.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ unconventional.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Отношение к представителям нетрадиционных направлений</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ unconventional.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ unconventional.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Агрессия</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ aggression.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ aggression.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Агрессия</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ aggression.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ aggression.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Избегание фемининности</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ femininityAvoidance.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ femininityAvoidance.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Избегание фемининности</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ femininityAvoidance.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ femininityAvoidance.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Доминирование</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ dominance.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ dominance.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Доминирование</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ dominance.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ dominance.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Экстремальная самодостаточность</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ selfSufficiency.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ selfSufficiency.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Экстремальная самодостаточность</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ selfSufficiency.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ selfSufficiency.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Рестриктивная эмоциональность</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ restrictiveEmotions.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ restrictiveEmotions.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Рестриктивная эмоциональность</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ restrictiveEmotions.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ restrictiveEmotions.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Нереляционное отношение к сексуальности</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ nonRelationalSex.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ nonRelationalSex.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Нереляционное отношение к сексуальности</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ nonRelationalSex.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ nonRelationalSex.average.toFixed(2) }}</h3>
         </div>
       </template>
       <template v-else-if="id == 3">
         <div>
-          <h2 class="mdc-типография--headline4">Снижение стресса</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ stressReduction.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ stressReduction.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Снижение стресса</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ stressReduction.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ stressReduction.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Удовольствие</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ pleasure.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ pleasure.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Удовольствие</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ pleasure.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ pleasure.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Физическая привлекательность</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ physicalAttractiveness.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ physicalAttractiveness.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Физическая привлекательность</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ physicalAttractiveness.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ physicalAttractiveness.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Поиск опыта</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ experienceSeeking.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ experienceSeeking.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Поиск опыта</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ experienceSeeking.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ experienceSeeking.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Ресурсы</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ resources.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ resources.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Ресурсы</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ resources.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ resources.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Социальный статус</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ socialStatus.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ socialStatus.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Социальный статус</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ socialStatus.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ socialStatus.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Месть</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ revenge.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ revenge.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Месть</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ revenge.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ revenge.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Утилитаризм</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ utilitarianism.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ utilitarianism.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Утилитаризм</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ utilitarianism.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ utilitarianism.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Любовь и обязательства</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ loveCommitment.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ loveCommitment.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Любовь и обязательства</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ loveCommitment.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ loveCommitment.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Экспрессия</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ expression.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ expression.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Экспрессия</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ expression.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ expression.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Повышение самооценки</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ selfEsteem.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ selfEsteem.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Повышение самооценки</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ selfEsteem.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ selfEsteem.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">Долг/Давление</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ dutyPressure.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ dutyPressure.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">Долг/Давление</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ dutyPressure.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ dutyPressure.average.toFixed(2) }}</h3>
         </div>
         <div>
-          <h2 class="mdc-типография--headline4">"Охрана" партнера</h2>
-          <h3 class="mdc-типография--headline6">Сумма: {{ partnerGuarding.total }}</h3>
-          <h3 class="mdc-типография--headline6">Среднее: {{ partnerGuarding.average.toFixed(2) }}</h3>
+          <h2 class="mdc-typography--headline4">"Охрана" партнера</h2>
+          <h3 class="mdc-typography--headline6">Сумма: {{ partnerGuarding.total }}</h3>
+          <h3 class="mdc-typography--headline6">Среднее: {{ partnerGuarding.average.toFixed(2) }}</h3>
         </div>
       </template>
-      <button @click="goBack" class="navigation-button mdc-типография--button">Назад</button>
+      <button @click="goBack" class="navigation-button mdc-typography--button">Назад</button>
     </div>
   </div>
 </template>
