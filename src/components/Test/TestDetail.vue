@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="mdc-typography--headline3 text-center">{{ test_name }}</h3>
+    <h3 class="mdc-typography--headline2 text-center">{{ test_name }}</h3>
     <div v-if="!formSubmitted">
       <p class="mdc-typography--headline6">{{ test_description }}</p>
       <form @submit.prevent="submitForm" class="form-container">
