@@ -23,7 +23,7 @@
                 </tr>
               </tbody>
             </table>
-            <p v-if="remainingQuestions" class="mdc-typography--body2 text-center">Осталось {{ remainingQuestions }} из {{
+            <p v-if="remainingQuestions" class="mdc-typography--body2 text-center">Вопрос {{ remainingQuestions }} из {{
         questions.length }}</p>
             <p v-if="!remainingQuestions" class="mdc-typography--body2 text-center">Последний вопрос</p>
           </div>
@@ -216,7 +216,7 @@ export default {
       return null;
     },
     remainingQuestions() {
-      return this.questions.length - this.currentQuestion - 1;
+      return this.currentQuestion + 1;
     }
   },
   methods: {
