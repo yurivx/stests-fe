@@ -24,19 +24,18 @@
               </tbody>
             </table>
             <p v-if="remainingQuestions" class="mdc-typography--body2 text-center">Вопрос {{ remainingQuestions }} из {{
-        questions.length }}</p>
+      questions.length }}</p>
             <p v-if="!remainingQuestions" class="mdc-typography--body2 text-center">Последний вопрос</p>
           </div>
         </div>
         <div class="navigation-buttons text-center">
           <button type="button" @click="previousQuestion" :disabled="currentQuestion <= 0"
-            class="navigation-button mdc-typography--button">&#8592;</button>
-          <button type="button" @click="nextQuestion" :disabled="currentQuestion === questions.length - 1"
-            class="navigation-button mdc-typography--button">&#8594;</button>
+            class="navigation-button mdc-typography--button">Назад</button>
+  
+          <button v-if="currentQuestion === questions.length - 1" type="submit" class="submit-button mdc-typography--button">Отправить</button>
+ 
         </div>
-        <div class="submit-container text-center" v-if="currentQuestion === questions.length - 1">
-          <button type="submit" class="submit-button mdc-typography--button">Отправить</button>
-        </div>
+
       </form>
     </div>
     <div v-else class="points-container text-center">
@@ -248,6 +247,10 @@ export default {
         ...this.points,
         [event.target.value]: point
       };
+
+      setTimeout(() => {
+        this.nextQuestion();
+      }, 500);
     },
     calculateSectionPoints(sectionQuestions) {
       let total = 0;
