@@ -5,7 +5,7 @@
       <p class="mdc-typography--headline6">{{ test_description }}</p>
       <form @submit.prevent="submitForm" class="form-container">
         <div v-if="questions.length > 0" class="question-container">
-          <div v-if="currentQuestionData">
+          <div v-if="currentQuestionData" :class="transitionClass">
             <h2 class="mdc-typography--headline5 question-text text-center">{{ currentQuestionData.text }}</h2>
             <table class="options-table">
               <tbody>
@@ -31,9 +31,10 @@
         <div class="navigation-buttons text-center">
           <button type="button" @click="previousQuestion" :disabled="currentQuestion <= 0"
             class="navigation-button mdc-typography--button">Назад</button>
-  
-          <button v-if="currentQuestion === questions.length - 1" type="submit" class="submit-button mdc-typography--button">Отправить</button>
- 
+
+          <button v-if="currentQuestion === questions.length - 1" type="submit"
+            class="submit-button mdc-typography--button">Отправить</button>
+
         </div>
 
       </form>
@@ -180,6 +181,7 @@ export default {
       totalPoints: null,
       averagePoints: null,
       currentQuestion: 0,
+      transitionClass: 'fade-in',
       // Initialization of all sections
       improvement: { total: 0, average: 0 },
       closeness: { total: 0, average: 0 },
@@ -248,9 +250,17 @@ export default {
         [event.target.value]: point
       };
 
+     
       setTimeout(() => {
+        this.transitionClass = 'fade-out';
+        setTimeout(() => {
+          this.transitionClass = 'fade-in';
+        }, 150);
         this.nextQuestion();
       }, 500);
+
+
+
     },
     calculateSectionPoints(sectionQuestions) {
       let total = 0;
@@ -323,41 +333,6 @@ export default {
 };
 </script>
 
-<!-- <style scoped>
-.text-center {
-  text-align: center;
-}
-.form-container {
-  width: 100%;
-}
-.question-container {
-  margin-bottom: 16px;
-}
-.options-table {
-  width: 100%;
-  margin-top: 16px;
-}
-.option-label {
-  padding-left: 8px;
-}
-.navigation-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 16px;
-}
-.navigation-button {
-  margin: 0 8px;
-}
-.submit-container {
-  margin-top: 16px;
-}
-.submit-button {
-  margin-top: 16px;
-}
-.points-container {
-  width: 100%;
-}
-</style> -->
 
 <style scoped>
 .form-container {
@@ -426,5 +401,21 @@ export default {
 
 .points-container {
   margin-top: 20px;
+}
+
+.question-container {
+  position: relative;
+}
+
+.question-text {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
 }
 </style>
